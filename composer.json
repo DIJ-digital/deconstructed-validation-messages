@@ -1,12 +1,12 @@
 {
-    "name": "dij/deconstructed-validation-messages",
-    "description": "This is my package deconstructed-validation-messages",
+    "name": "dij-digital/deconstructed-validation-messages",
+    "description": "",
     "keywords": [
         "DIJ",
         "laravel",
         "deconstructed-validation-messages"
     ],
-    "homepage": "https://bitbucket.org/deinternetjongens/deconstructed-validation-messages",
+    "homepage": "https://github.com/DIJ-digital/deconstructed-validation-messages",
     "license": "MIT",
     "authors": [
         {
@@ -21,6 +21,8 @@
         "illuminate/contracts": "^10.0||^11.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "larastan/larastan": "^2.9",

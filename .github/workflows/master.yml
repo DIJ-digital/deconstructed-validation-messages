@@ -1,0 +1,25 @@
+name: Master pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - acceptance
+      - master
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+    branches:
+      - develop
+      - acceptance
+      - master
+
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/steps/setup-project.yml
+    with:
+      name: "Main Workflow"
+      run-tests: true

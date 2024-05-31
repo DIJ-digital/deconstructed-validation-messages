@@ -1,0 +1,53 @@
+name: Setup project
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      run-tests:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: [8.3]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.composer/cache
+          key: composer-${{ runner.os }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            composer-${{ runner.os }}-
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, intl, pdo, mongodb, bcmath, exif, gd
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyze
+
+      - name: Run Pint
+        run: vendor/bin/pint --test --config https://raw.githubusercontent.com/DIJ-digital/pint-config/f9a52276294d2b1c323f5883fdc29884d4943e54/pint.json
+
+      - name: Run tests
+        if: ${{ inputs.run-tests }}
+        run: composer test
+
+      - name: Cleanup
+        run: composer clear-cache
