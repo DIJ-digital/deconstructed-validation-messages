@@ -1,0 +1,74 @@
+definitions:
+  steps:
+  - step: &composer
+      name: Composer
+      caches:
+      - composer
+      - npm
+      script:
+      - composer install --no-scripts
+      artifacts:
+        paths:
+        - vendor/**
+  - step: &test
+      name: "Unit tests"
+      script:
+      - composer test
+      artifacts:
+      - storage/logs/*.log
+      - build/test-reports/clover.xml
+  - step: &codestyle
+      name: "Codestyle"
+      script:
+      - composer pint
+      - if git status | grep 'Changes not staged for commit'; then git commit -am "Automatic Codestyle fixer commit" && git push && echo "Pipeline stopped because of automatic code style fixer. New build has been started." && exit 1; fi
+  - step: &analyse
+      name: "Static Analysis"
+      script:
+      - composer analyse
+      caches:
+        - phpstan
+  - step: &prs
+      name: Manage PRs
+      image:
+        name: deinternetjongens/requestor:latest
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASSWORD
+      script:
+      - requestor --repository=${BITBUCKET_REPO_SLUG}
+  caches:
+    npm: ~/.npm
+    composer: ~/.composer/cache
+    phpstan: phpstan-cache
+image:
+  name:  deinternetjongens/php8.3:latest
+  username: $DOCKERHUB_USERNAME
+  password: $DOCKERHUB_PASSWORD
+
+pipelines:
+  pull-requests:
+    '**':
+    - parallel:
+      - step: *composer
+    - parallel:
+      - step: *codestyle
+      - step: *analyse
+      - step: *test
+  branches:
+    develop:
+    - parallel:
+      - step: *composer
+    - parallel:
+      - step: *test
+    acceptance:
+    - parallel:
+      - step: *composer
+    - parallel:
+      - step: *test
+    master:
+    - parallel:
+      - step: *composer
+    - parallel:
+      - step: *test
+    - parallel:
+      - step: *prs
