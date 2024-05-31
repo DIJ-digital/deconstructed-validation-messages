@@ -19,7 +19,7 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: ./.github/workflows/steps/setup-project.yml
+    uses: ./.github/workflows/setup-project.yml
     with:
       name: "Main Workflow"
       run-tests: true
