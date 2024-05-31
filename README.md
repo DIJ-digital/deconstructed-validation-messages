@@ -7,10 +7,10 @@ This package makes Laravel return validation messages in a deconstructed way. In
 You can install the package via composer:
 
 ```bash
-composer require dij/deconstructed-validation-messages
+composer require dij-digital/deconstructed-validation-messages
 ```
 
-You can publish the config file with:
+Optionally you can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="deconstructed-validation-messages-config"
