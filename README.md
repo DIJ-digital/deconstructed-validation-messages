@@ -1,6 +1,6 @@
 # deconstructed-validation-messages
 
-This package makes Laravel return validation messages in a deconstructed way. Instead of simply returning strings. This way your frontend can easily display the messages in a more user-friendly way.
+Is your application headless or an API? Do you want *all* your translations to be done in the frontend? Then this is the package for you. Instead of returning the translated error strings from the Laravel translation files, this package returns the original translation keys, the parameters and their values.
 
 ## Installation
 
@@ -25,7 +25,7 @@ return [
 
 ## Usage
 
-Simply install the package and make sure the Provider is registered. The package will automatically take care of the rest.
+Simply install the package and make sure the provider is registered. The package will automatically take care of the rest.
 
 Your response will look like this:
 
