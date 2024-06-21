@@ -27,6 +27,23 @@ return [
 
 Simply install the package and make sure the Provider is registered. The package will automatically take care of the rest.
 
+Your response will look like this:
+
+```json
+{
+  "field": {
+    "rule": {
+      "key": "rule.language_key",
+      "message": "Traditional error message",
+      "parameters": {
+        "x": 1,
+        "y": 2
+      }
+    }
+  }
+}
+```
+
 ## Testing
 
 ```bash
