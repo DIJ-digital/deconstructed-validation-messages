@@ -11,6 +11,8 @@ use Illuminate\Validation\Validator;
 
 class DeconstructedValidator extends Validator
 {
+    protected $exception = DeconstructedValidationException::class;
+
     private readonly ErrorStore $errorStore;
 
     /**
