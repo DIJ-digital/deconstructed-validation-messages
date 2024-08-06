@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace DIJ\DeconstructedValidationMessages\Facades;
 
-use App\Validation\TrankieValidatorFactory;
 use DIJ\DeconstructedValidationMessages\Validation\DeconstructedValidatorFactory;
 use Illuminate\Support\Facades\Facade;
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DIJ\DeconstructedValidationMessages\Validation;
 
 use Illuminate\Contracts\Translation\Translator;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Validator;
 
@@ -16,10 +15,10 @@ class DeconstructedValidator extends Validator
     private readonly ErrorStore $errorStore;
 
     /**
-     * @param  array<string, mixed>  $data
-     * @param  array<int, mixed>  $rules
-     * @param  array<string, mixed>  $messages
-     * @param  array<string, mixed>  $attributes
+     * @param array<string, mixed> $data
+     * @param array<int, mixed> $rules
+     * @param array<string, mixed> $messages
+     * @param array<string, mixed> $attributes
      */
     public function __construct(Translator $translator, array $data, array $rules, array $messages = [], array $attributes = [])
     {
@@ -110,7 +109,7 @@ class DeconstructedValidator extends Validator
     }
 
     /**
-     * @param  array<int, bool|float|int|string>  $parameters
+     * @param array<int, bool|float|int|string> $parameters
      */
     public function makeReplacements($message, $attribute, $rule, $parameters): string
     {

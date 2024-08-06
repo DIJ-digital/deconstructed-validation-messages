@@ -16,7 +16,7 @@ class DeconstructedValidatorFactory extends Factory
      * @param array<string, mixed> $attributes
      * @return DeconstructedValidator|Validator|mixed
      */
-    protected function resolve(array $data, array $rules, array $messages, array $attributes )
+    protected function resolve(array $data, array $rules, array $messages, array $attributes)
     {
         /** @phpstan-ignore-next-line  */
         if (is_null($this->resolver)) {
