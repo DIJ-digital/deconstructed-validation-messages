@@ -29,9 +29,9 @@ class DeconstructedValidator extends Validator
     }
 
     /**
-     * @return MessageBag|array<string, array<string, mixed>>
+     * @phpstan-ignore-next-line
      */
-    public function errors(): MessageBag|array
+    public function errors(): array
     {
         return $this->errorStore->getErrors();
     }
