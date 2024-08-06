@@ -10,10 +10,10 @@ use Illuminate\Validation\Validator;
 class DeconstructedValidatorFactory extends Factory
 {
     /**
-     * @param array<string, mixed> $data
-     * @param array<int, mixed> $rules
-     * @param array<string, mixed> $messages
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $data
+     * @param  array<int, mixed>  $rules
+     * @param  array<string, mixed>  $messages
+     * @param  array<string, mixed>  $attributes
      * @return DeconstructedValidator|Validator|mixed
      */
     protected function resolve(array $data, array $rules, array $messages, array $attributes)

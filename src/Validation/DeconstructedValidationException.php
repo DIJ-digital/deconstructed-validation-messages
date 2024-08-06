@@ -20,7 +20,7 @@ class DeconstructedValidationException extends BaseValidationException
     /**
      * Create an error message summary from the validation errors.
      *
-     * @param DeconstructedValidator $validator
+     * @param  DeconstructedValidator  $validator
      * @return string
      */
     protected static function summarize($validator)

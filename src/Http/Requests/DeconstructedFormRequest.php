@@ -12,7 +12,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class DeconstructedFormRequest extends BaseFormRequest
 {
     /**
-     * @param DeconstructedValidator $validator
+     * @param  DeconstructedValidator  $validator
      */
     protected function failedValidation($validator)
     {

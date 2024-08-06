@@ -17,7 +17,7 @@ class ErrorStore
     }
 
     /**
-     * @param array<int, bool|float|int|string> $parameters
+     * @param  array<int, bool|float|int|string>  $parameters
      */
     public function addParametersToError(string $attribute, string $rule, array $parameters): void
     {

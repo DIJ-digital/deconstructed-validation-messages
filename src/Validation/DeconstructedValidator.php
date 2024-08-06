@@ -15,16 +15,16 @@ class DeconstructedValidator extends Validator
     private readonly ErrorStore $errorStore;
 
     /**
-     * @param array<string, mixed> $data
-     * @param array<int, mixed> $rules
-     * @param array<string, mixed> $messages
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $data
+     * @param  array<int, mixed>  $rules
+     * @param  array<string, mixed>  $messages
+     * @param  array<string, mixed>  $attributes
      */
     public function __construct(Translator $translator, array $data, array $rules, array $messages = [], array $attributes = [])
     {
         parent::__construct($translator, $data, $rules, $messages, $attributes);
 
-        $this->errorStore = new ErrorStore();
+        $this->errorStore = new ErrorStore;
     }
 
     /**
@@ -109,7 +109,7 @@ class DeconstructedValidator extends Validator
     }
 
     /**
-     * @param array<int, bool|float|int|string> $parameters
+     * @param  array<int, bool|float|int|string>  $parameters
      */
     public function makeReplacements($message, $attribute, $rule, $parameters): string
     {
