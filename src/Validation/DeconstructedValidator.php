@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace DIJ\DeconstructedValidationMessages\Validation;
 
 use Illuminate\Contracts\Translation\Translator;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Validator;
 
 class DeconstructedValidator extends Validator
 {
+    protected $exception = DeconstructedValidationException::class;
+
     private readonly ErrorStore $errorStore;
 
     /**
@@ -23,13 +24,13 @@ class DeconstructedValidator extends Validator
     {
         parent::__construct($translator, $data, $rules, $messages, $attributes);
 
-        $this->errorStore = new ErrorStore();
+        $this->errorStore = new ErrorStore;
     }
 
     /**
-     * @return MessageBag|array<string, array<string, mixed>>
+     * @phpstan-ignore-next-line
      */
-    public function errors(): MessageBag|array
+    public function errors(): array
     {
         return $this->errorStore->getErrors();
     }
